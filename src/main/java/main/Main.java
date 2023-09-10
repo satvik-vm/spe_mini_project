@@ -8,7 +8,7 @@ public class Main {
     private static final Logger logger = LogManager.getLogger(Main.class);
     public static void main(String[] args){
         Scanner reader = new Scanner(System.in);
-        System.out.println("Welcome to the calculator app");
+        System.out.println("Hello! Welcome to the calculator app");
         System.out.println("Please choose the operation you want to perform");
         System.out.println("1. Power");
         System.out.println("2. nCr");
