@@ -1,10 +1,11 @@
 package main;
 
-import javax.sound.midi.SysexMessage;
 import java.util.Scanner;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Main {
+    private static final Logger logger = LogManager.getLogger(Main.class);
     public static void main(String[] args){
         Scanner reader = new Scanner(System.in);
         System.out.println("Welcome to the calculator app");
@@ -21,14 +22,23 @@ public class Main {
                 System.out.println("Please enter base and exponent");
                 int base = reader.nextInt();
                 int exp = reader.nextInt();
-                power(base, exp);
+                int answer = power(base, exp);
+                System.out.println(base + " raise to the power " + exp + " is: ");
+                System.out.println(answer);
             }
             else if(choice == 2){
                 System.out.println("You have chosen nCr function");
                 System.out.println("PLease enter n and r");
                 int n = reader.nextInt();
                 int r = reader.nextInt();
-                nCr(n, r);
+                if(n >= r){
+                    int answer = nCr(n, r);
+                    System.out.println("nCr for n = " + n + " and r = " + r + " is:");
+                    System.out.println(answer);
+                }
+                else{
+                    System.out.println("r cannot be greater than n");
+                }
             }
             else if(choice == 3){
                 System.out.println("You have chosen GCD function");
@@ -44,7 +54,7 @@ public class Main {
         }
     }
 
-    static void power(int base, int exp){
+    public static int power(int base, int exp){
 //        System.out.println("Enter base: ");
 //        int base = reader.nextInt();
 //        System.out.println("Enter power");
@@ -59,15 +69,16 @@ public class Main {
             base *= base;
             exp >>= 1;
         }
-        System.out.println(initialBase + " raise to the power " + initalExp + " is: ");
-        System.out.println(answer);
+//        System.out.println(initialBase + " raise to the power " + initalExp + " is: ");
+//        System.out.println(answer);
+        return answer;
     }
 
-    static void nCr(int n, int r){
-        if(r > n){
-            System.out.println("r cannot be greater than n");
-            return;
-        }
+    public static int nCr(int n, int r){
+//        if(r > n){
+//            System.out.println("r cannot be greater than n");
+//            return -1;
+//        }
         int[][] dp = new int[n + 1][r + 1];
 
         for (int i = 0; i <= n; i++) {
@@ -79,11 +90,12 @@ public class Main {
                 }
             }
         }
-        System.out.println("nCr for n = " + n + " and r = " + r + " is:");
-        System.out.println(dp[n][r]);
+//        System.out.println("nCr for n = " + n + " and r = " + r + " is:");
+//        System.out.println(dp[n][r]);
+        return dp[n][r];
     }
 
-    static int gcd(int a, int b){
+    public static int gcd(int a, int b){
         if (b == 0) {
             return a;
         }
