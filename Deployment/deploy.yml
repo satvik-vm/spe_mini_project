@@ -8,3 +8,9 @@
       docker_image:
         name: satvikvm/spe_mini_project:latest
         source: pull
+      name: Start docker container
+      service:
+        name: docker
+        state: started
+      name: Running container
+      shell: docker run -it -d --name calculator satvikvm/spe_mini_project
