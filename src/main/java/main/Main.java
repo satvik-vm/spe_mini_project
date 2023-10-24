@@ -23,6 +23,7 @@ public class Main {
                 System.out.println("Please enter base and exponent");
                 int base = reader.nextInt();
                 int exp = reader.nextInt();
+                logger.info("Now executing power function");
                 int answer = power(base, exp);
                 System.out.println(base + " raise to the power " + exp + " is: ");
                 System.out.println(answer);
@@ -33,6 +34,7 @@ public class Main {
                 int n = reader.nextInt();
                 int r = reader.nextInt();
                 if(n >= r){
+                    logger.info("Now calculating nCr");
                     int answer = nCr(n, r);
                     System.out.println("nCr for n = " + n + " and r = " + r + " is:");
                     System.out.println(answer);
@@ -46,6 +48,7 @@ public class Main {
                 System.out.println("Please enter the two number");
                 int a = reader.nextInt();
                 int b = reader.nextInt();
+                logger.info("Now calculating gcd");
                 System.out.println("GCD of " + a + " and " + b);
                 System.out.println(gcd(a, b));
             }
@@ -56,31 +59,20 @@ public class Main {
     }
 
     public static int power(int base, int exp){
-//        System.out.println("Enter base: ");
-//        int base = reader.nextInt();
-//        System.out.println("Enter power");
-//        int exp = reader.nextInt();
         int initialBase = base;
         int initalExp = exp;
         int answer = 1;
-        while(exp > 0){
-            if((exp & 1) == 1){
+        while(exp > 0) {
+            if ((exp & 1) == 1) {
                 answer *= base;
             }
             base *= base;
             exp >>= 1;
         }
-//        System.out.println(initialBase + " raise to the power " + initalExp + " is: ");
-//        System.out.println(answer);
-        logger.info("Now executing power function");
         return answer;
     }
 
     public static int nCr(int n, int r){
-//        if(r > n){
-//            System.out.println("r cannot be greater than n");
-//            return -1;
-//        }
         int[][] dp = new int[n + 1][r + 1];
 
         for (int i = 0; i <= n; i++) {
@@ -92,9 +84,6 @@ public class Main {
                 }
             }
         }
-//        System.out.println("nCr for n = " + n + " and r = " + r + " is:");
-//        System.out.println(dp[n][r]);
-        logger.info("Now calculating nCr");
         return dp[n][r];
     }
 
@@ -102,7 +91,6 @@ public class Main {
         if (b == 0) {
             return a;
         }
-        logger.info("Now calculating gcd");
         return gcd(b, a % b);
     }
 }
