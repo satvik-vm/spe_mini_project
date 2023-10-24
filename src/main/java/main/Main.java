@@ -8,14 +8,15 @@ public class Main {
     private static final Logger logger = LogManager.getLogger(Main.class);
     public static void main(String[] args){
         Scanner reader = new Scanner(System.in);
-        System.out.println("Welcome to the calculator app");
-        System.out.println("Please choose the operation you want to perform");
-        System.out.println("1. Power");
-        System.out.println("2. nCr");
-        System.out.println("3: GCD");
-        System.out.println("99: Exit");
+        logger.info("A fundamental calculator for exponential, nCr and Greatest Common Divisor");
         int choice = 0;
         while(choice != 99){
+            System.out.println("Welcome to the calculator app");
+            System.out.println("Please choose the operation you want to perform");
+            System.out.println("1. Power");
+            System.out.println("2. nCr");
+            System.out.println("3: GCD");
+            System.out.println("99: Exit");
             choice = reader.nextInt();
             if(choice == 1) {
                 System.out.println("You have chosen power function");
@@ -71,6 +72,7 @@ public class Main {
         }
 //        System.out.println(initialBase + " raise to the power " + initalExp + " is: ");
 //        System.out.println(answer);
+        logger.info("Now executing power function");
         return answer;
     }
 
@@ -92,6 +94,7 @@ public class Main {
         }
 //        System.out.println("nCr for n = " + n + " and r = " + r + " is:");
 //        System.out.println(dp[n][r]);
+        logger.info("Now calculating nCr");
         return dp[n][r];
     }
 
@@ -99,6 +102,7 @@ public class Main {
         if (b == 0) {
             return a;
         }
+        logger.info("Now calculating gcd");
         return gcd(b, a % b);
     }
 }
